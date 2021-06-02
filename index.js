@@ -10,6 +10,11 @@ app.get("/", (req, res) => {
     
     res.render("index")
 })
+app.get("/:perguntar", (req, res) => {
+    
+    res.render("perguntar")
+})
+
 
 app.listen(port, () => {
     console.log("App rodando na porta: "+port);
