@@ -20,8 +20,13 @@ app.use (express.json())
 
 
 app.get("/", (req, res) => {
+    Pergunta.findAll({raw:true}).then(perguntas => {
+        console.log(perguntas)
+        res.render("index", {
+            perguntas: perguntas
+        }) ;
+    });
     
-    res.render("index")
 })
 app.get("/perguntar", (req, res) => {
     
