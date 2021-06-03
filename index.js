@@ -1,7 +1,16 @@
 const express = require("express");
 const app = express();
 const port = 3000;
+const connection = require('./database/database');
+const perguntaModel = require('./database/Pergunta');
 
+connection.authenticate()
+.then(() => {
+    console.log("Autenticação feita com sucesso no banco de dados!")
+})
+.catch((msgErro) => {
+    console.log(msgErro)
+})
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
