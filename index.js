@@ -20,7 +20,9 @@ app.use (express.json())
 
 
 app.get("/", (req, res) => {
-    Pergunta.findAll({raw:true}).then(perguntas => {
+    Pergunta.findAll({raw:true, order:[
+        ['id', 'DESC']
+    ]}).then(perguntas => {
         console.log(perguntas)
         res.render("index", {
             perguntas: perguntas
@@ -32,6 +34,22 @@ app.get("/perguntar", (req, res) => {
     
     res.render("perguntar")
 })
+
+app.get("/perguntar/:id",(req, res) => {
+    var id = req.params.id;
+    Pergunta.findOne({
+        where: {id: id}
+    }).then(pergunta => {
+        if(pergunta != undefined){
+            res.render("pergunta", {
+                pergunta: pergunta
+            })
+
+        }else{
+            res.redirect("/")
+        }
+    })
+});
 
 app.post("/salvarpergunta" ,(req, res) => {
     var titulo = req.body.titulo;
