@@ -12,7 +12,6 @@ const Resposta = connection.define('resposta', {
     }
 })
 
+Resposta.sync({force: false}).then(() => {})
 
-Resposta.sync({force: false})
-
-module.export = Resposta;
+module.exports = Resposta;
