@@ -7,13 +7,43 @@
         <hr>
         <h1>Perguntas</h1>
         <hr>
-        <a href="/pergunta" class="btn btn-primary"> Perguntar</a>
+        <a href="/pergunta" class="btn btn-primary"> Fazer nova pergunta</a>
         <hr>
     <% perguntas.forEach(pergunta => { %>
         <br>
         <div class="card">
-            <div class="card-header">
+            <div class="card-header" >
                 <p> <%= pergunta.titulo %> </p>
+                <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Visualizar descrição
+            </button>
+           
+
+                 <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" 
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                    Detalhes sobre a pergunta</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" 
+                aria-label="Close"></button>
+            </div>
+             <div class="modal-body" >
+                 
+               <p> <%= pergunta.descricacao %></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+              </div>
+        
+            </div>
+            </div>
+        </div>   
+
+
             </div>
             <div class="card-body">
              <a href="/pergunta/<%= pergunta.id %>">
