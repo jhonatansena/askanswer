@@ -9,9 +9,10 @@
 
 Para executar o projeto no terminal, digite o seguinte comando:
 
-```shell script
 ```
 nodem index
+```
+
 
 Após executar o comando acima, basta apenas abrir o seguinte endereço e visualizar a execução do projeto:
 
